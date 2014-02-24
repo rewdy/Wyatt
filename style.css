@@ -1,0 +1,13 @@
+/*
+Theme Name: Wyatt
+Theme URI: http://rewdy.com/project/wilson
+Author: Andrew Meyer
+Author URI: http://rewdy.com
+Description: A very simple, single-column, Helvetica-inspired theme for text-heavy blogs.
+Version: 1.0
+*/
+
+@import url(lib/fonts/font-awesome-4.0.3/css/font-awesome.min.css);
+@import url(lib/Nivo-Lightbox-1.1/nivo-lightbox.css);
+@import url(lib/Nivo-Lightbox-1.1/themes/default/default.css);
+@import url(css/style.css);

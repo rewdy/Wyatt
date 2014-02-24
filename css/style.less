@@ -1,0 +1,558 @@
+/*
+
+Stylesheet
+----------
+
+Project:	Reader
+Date:		08/04/2013
+
+----------
+
+Table of Contents
+-----------------
+
+1. Core
+2. Layout
+3. Module
+4. Theme
+5. State
+
+----------
+
+
+*/
+
+@background: #eceef1;
+@color: #828c97;
+@accent: #2f79e7;
+@linkcolor: @accent;
+@linkhover: #333;
+@linecolor: #e1e1e1;
+
+@footerbackground: #cdd7e8;
+@footertext: #7188af;
+@footerlinecolor: darken(@footerbackground, 5%);
+
+@selection: #ede285;
+@blockbackground: #f5f7fa;
+@screen: @blockbackground;
+
+@font: "Helvetica Neue", sans-serif;
+@sans: @font;
+@size: 1em;
+@small: 0.8em;
+@fontScale: 1.8; // Used for line-height, margin, etc.
+@lineheight:unit(@fontScale, em);
+@headingDeepest: 6; // Should remain 6 or fewer.
+@headingMultiplier: 1.22;
+
+@maxwidth: 650px;
+@minwidth: 300px;
+@breakpoint: 640px; // point at which columns stack
+@breakpoint2: 360px;
+
+/*
+1. Core
+-------
+*/
+
+// pull in core, type, and form plugins
+@import "plugins/core.less";
+@import "plugins/type.less";
+@import "plugins/forms.less";
+
+/*
+2. Layout
+---------
+*/
+
+// pull in grid
+@import "plugins/grid-light.less";
+
+body {
+	background-color:@footerbackground; // footer color
+}
+#wrapper {
+	background-color:@background;
+	color:@color;
+}
+#site-title {
+	padding:0.6em 0;
+	margin:0;
+	border-bottom:1px solid darken(@background, 6%);
+	color:@accent;
+	font-size:6em;
+	line-height:1.25em;
+	font-family:@font;
+	font-weight:100;
+	white-space:nowrap;
+	a {
+		color:inherit;
+		text-decoration:none;
+		&:hover {
+			color:@linkhover;
+		}
+	}
+	.transition;
+}
+@media only screen and (max-width:@breakpoint) {
+	#site-title {
+		font-size:4em;
+	}
+}
+@media only screen and (max-width:@breakpoint2) {
+	#site-title {
+		font-size:2.5em;
+	}
+}
+
+#nav-holder {
+	.grid .full {
+		overflow:hidden;
+		padding:0;
+		margin:0 1em;
+	}
+	a {
+		display:block;
+		float:left;
+		background-color:@background;
+		padding:0.3em 0.8em;
+		text-decoration:none;
+		&:hover {
+			background-color:darken(@background, 6%);
+		}
+	}
+	a#menu-link {
+		position:relative;
+		z-index:100;
+	}
+	ul {
+		float:left;
+		margin:0;
+		margin-left:-100%;
+		.transition;
+		li {
+			display:inline;
+			list-style:none;
+			margin:0;
+			padding:0;
+		}
+	}
+	&:hover ul,
+	ul.open {
+		margin-left:0;
+	}
+}
+@media only screen and (max-width:@breakpoint) {
+	#site-header .grid .full {
+		margin-top:0;
+		margin-bottom:0;
+	}
+}
+#content-body {
+	padding:3em 0;
+}
+#content-comments {
+	padding:3em 0;
+	background-color:darken(@background, 2%);
+}
+#site-footer {
+	padding:3em 0;
+	font-size:0.9em;
+	color:@footertext;
+	a {
+		color:@footertext;
+		&:hover {
+			color:darken(@footertext, 15%);
+		}
+	}
+}
+#footer-widgets {
+	margin-bottom:@lineheight;
+	border-bottom:1px solid @footerlinecolor;
+}
+
+
+/*
+3. Module
+---------
+*/
+// modules
+#footer-nav ul.menu {
+	li {
+		display:inline-block;
+		margin:0 0.5em;
+		padding:0;
+		list-style:none;
+	}
+}
+
+// listings and articles
+.listing h1 {
+	margin:@lineheight 0 0 0;
+	background-color:@color;
+	color:@background;
+	text-align:center;
+	text-transform:uppercase;
+	font-size:1.15em;
+	font-weight:400;
+}
+article {
+	margin:4em 0;
+	.date {
+		font-size:@small;
+	}
+	.details {
+		float:right;
+		padding:0.3rem 0;
+		font-size:0.9em;
+		opacity:0.8;
+	}
+	.date,
+	.details {
+		a {
+			color:darken(@color, 15%);
+			text-decoration:none;
+			&:hover {
+				color:@accent;
+				text-decoration:underline;
+			}
+		}
+	}
+	ul.link-list {
+		margin:0 0 @lineheight 0;
+		li {
+			display:inline;
+			margin:0;
+			padding:0;
+			list-style:none;
+			a {
+				.button-light;
+				.text {
+					.assistive-text;
+				}
+			}
+		}
+	}
+
+	// Image alignment classes. These are from the wordpress codex.
+	img.alignright,
+	a img.alignright,
+	div.alignright img {
+		float:right; 
+		margin:0 0 1em 1em;
+	}
+	img.alignleft,
+	a img.alignleft,
+	div.alignleft img {
+		float:left;
+		margin:0 1em 1em 0;
+	}
+	img.aligncenter,
+	a img.aligncenter,
+	div.aligncenter img {
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	// attachments, galleries, etc (i.e. images)
+	.attachment-caption,
+	.wp-caption-text {
+		font-size:@small;
+		line-height:@lineheight;
+		font-style:italic;
+	}
+	div.gallery {
+		margin-bottom:@lineheight !important; // I don't believe in !importants, but this is to override a default wordpress style that doesn't make sense.
+		background-color:@screen;
+		&:after {
+			.clearfixed;
+		}
+	}
+	div[id^='attachment'] {
+		background-color:@screen;
+		margin-bottom:@lineheight;
+		width:auto!important;
+		&.alignnone {
+			margin-left:-150px;
+			margin-right:-150px;
+			@media only screen and (max-width:@maxwidth) {
+				margin-left:0;
+				margin-right:0;
+			}
+			img {
+				display:block;
+			}
+		}
+		.wp-caption-text {
+			padding:0.5em;
+			text-align:right;
+		}
+	}
+}
+.listing {
+	article {
+		.details,
+		ul.link-list {
+			opacity:0;
+			.transition;
+		}
+		&:hover {
+			.details,
+			ul.link-list {
+				opacity:1;
+			}
+		}
+	}
+}
+
+// Comments
+#content-comments {
+	h2 .count {
+		font-weight:200;
+		float:right;
+	}
+	.comment-awaiting-moderation {
+		position:relative;
+		top:0.5em;
+		text-align:center;
+	}
+	.some-html-allowed {
+		display:none;
+	}
+	article.comment {
+		ul.link-list li a {
+			border-color:darken(@linecolor, 2%);
+		}
+		@media only screen and (max-width:@breakpoint) {
+			.details {
+				float:none;
+			}
+		}
+	}
+}
+ul.comment-list {
+	margin:0;
+	padding:0;
+	border-top:1px solid @linecolor;
+	li {
+		display:block;
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	ul.children {
+		margin-top:-(@lineheight);
+		padding-left:@lineheight;
+		border-left:1px solid darken(@linecolor, 10%);
+	}
+}
+
+// sharing
+.sharing {
+	clear:both;
+	padding:1em 0.5em;
+	text-align:center;
+	background-color:lighten(@color, 35%);
+	.sharing-heading {
+		position:relative;
+		top:-0.5em;
+		font-weight:400;
+		text-transform:uppercase;
+	}
+}
+ul.sharing-list {
+	margin:0;
+	padding:0;
+	font-size:@small;
+	text-align:center;
+	li {
+		margin:0;
+		padding:0;
+		list-style:none;
+		display:inline;
+		a {
+			display:inline-block;
+			width:1em;
+			padding:0.3em 1em;
+			margin:0 0.25em 0 0;
+			text-align:center;
+			color:@accent;
+			line-height:@lineheight;
+			border:1px solid @accent;
+			.transition;
+			.text {
+				display:none;
+			}
+			&:hover {
+				color:#fff;
+				background-color:@accent;
+			}
+		}
+		a.facebook {
+			color:#4e69a2;
+			border-color:#4e69a2;
+			&:hover {
+				color:#fff;
+				background-color:#4e69a2;
+			}
+		}
+		a.twitter {
+			color:#55acee;
+			border-color:#55acee;
+			&:hover {
+				color:#fff;
+				background-color:#55acee;
+			}
+		}
+		a.pinterest {
+			color:#cc2127;
+			border-color:#cc2127;
+			&:hover {
+				color:#fff;
+				background-color:#cc2127;
+			}
+		}
+		a.gplus {
+			color:#dd4b39;
+			border-color:#dd4b39;
+			&:hover {
+				color:#fff;
+				background-color:#dd4b39;
+			}
+		}
+		a.tumblr {
+			color:#314f6c;
+			border-color:#314f6c;
+			&:hover {
+				color:#fff;
+				background-color:#314f6c;
+			}
+		}
+		a.adn {
+			color:#d87b63;
+			border-color:#d87b63;
+			&:hover {
+				color:#fff;
+				background-color:#d87b63;
+			}
+		}
+		a.email {
+		}
+	}
+}
+
+// pagination
+.directional-links {
+	.nav-previous,
+	.nav-next {
+		float:left;
+		width:50%;
+		.border-box;
+	}
+	.nav-next {
+		float:right;
+		text-align:right;
+	}
+	a {
+		position:relative;
+		color:@color;
+		&:hover {
+			color:@linkcolor;
+		}
+	}
+	.nav-previous a i.fa,
+	.nav-next a i.fa {
+		position:absolute;
+		top:-0.25em;
+		left:-1em;
+		font-size:2em;
+		text-transform:none;
+	}
+	.nav-next a i.fa {
+		right:-1em;
+	}
+	@media only screen and (max-width: @breakpoint) {
+		.nav-previous {
+			padding-left:2em;
+		}
+		.nav-next {
+			padding-right:2em;
+		}
+	}
+}
+
+/*
+4. Theme
+--------
+*/
+
+@import "plugins/reftagger.less";
+
+#footer-widgets {
+	h2 {
+		font-size:1.3em;
+	}
+	ul {
+		li {
+			margin:0;
+			padding:0.15em 0;
+			list-style:none;
+			border-top:1px solid @footerlinecolor;
+		}
+	}
+}
+
+/*
+5. State
+--------
+*/
+
+// pull in classes
+@import "plugins/classes.less";
+
+#wpadminbar {
+	opacity:0.3;
+	margin-top:-29px;
+	.transition;
+	&:hover {
+		margin-top:0;
+		opacity:1;
+	}
+}
+
+// YouTube video wrapper (makes them responsive)
+.video-wrapper {
+	display:block;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+    iframe,
+    object,
+    embed {
+    	position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+    }
+}
+
+// Utils
+.assistive-text {
+	position:absolute;
+	top:0;
+	left:0;
+	width:0;
+	height:0;
+	font-size:1px;
+	overflow:hidden;
+}
+
+// Mixins
+.transition(@duration: 0.3s) {
+	-webkit-transition:all @duration linear;
+	-moz-transition:all @duration linear;
+	transition:all @duration linear;
+}

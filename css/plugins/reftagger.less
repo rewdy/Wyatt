@@ -1,0 +1,80 @@
+.lbsTooltip {
+	z-index: 99;
+	border: 1px solid @linecolor;
+	background:@blockbackground;
+	text-align: left;
+	text-indent: 0;
+	letter-spacing: normal;
+	div {
+		text-align: left;
+	}
+}
+
+.lbsTooltipHeader {
+	position:relative;
+	margin: 0;
+	padding:5px 10px;
+	border: 0;
+	background:@background;
+}
+
+.lbsTooltipBody  {
+	position:relative;
+	z-index: 2;
+	margin:0;
+	padding: 5px 10px;
+	border: 0;
+	font-size:0.8em;
+	line-height:1.5em;
+}
+
+.lbsTooltipBody p, .lbsTooltipBody span {
+	display: inline;
+	color: @color;
+}
+
+.lbsTooltipFooter {
+	position:absolute;
+	bottom:2px;
+	margin-top: 2px;
+	border: 0;
+	text-align:right;
+	letter-spacing: normal;
+	font-size:11px;
+}
+
+.lbsTooltipFooter a:link, .lbsTooltipFooter a:visited, .lbsTooltipFooter a:hover  {
+	color: @linkcolor;
+	text-decoration: underline;
+	font-weight: normal;
+	font-size:11px;
+}
+
+.lbsTooltipFooter div {
+	text-align:right;
+}
+
+
+.lbsTooltipBody .ch-ref, .lbsTooltipBody .verse-ref {
+	position: relative;
+	top: -1px;
+	font-size: 85%;
+}
+
+.lbsTooltipBody .ch-ref {
+	font-weight: bold;
+}
+
+.lbsTooltipBody .verse-ref {
+	color: dimgray;
+}
+
+.lbsTooltip, .lbsTooltipBody span, .lbsTooltip a, .lbsTooltipBody p {
+	margin: 0;
+	padding: 0;
+	letter-spacing: normal;
+}
+
+.lbsLibronix img {
+	float: none !important;
+}

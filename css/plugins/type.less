@@ -1,0 +1,120 @@
+/* Type + Tags */
+
+body {
+	font-family:@font;
+	font-size:@size;
+	line-height:@lineheight;
+	font-weight:300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin:0.2em 0 0.5em 0;
+	line-height:unit(@fontScale*0.93, em);
+	color:@accent;
+	font-weight:300;
+	a {
+		color:@accent;
+		text-decoration:none;
+		&:hover {
+			color:@linkhover;
+		}
+	}
+}
+h1, h2 {
+	font-size:1.6em;
+	font-weight:500;
+}
+h3 {
+	font-size:1.3em;
+	font-weight:400;
+	margin-bottom:0.2em;
+}
+h4 {
+
+}
+
+p, ul, ol, pre, table {
+	margin:0 0 @lineheight 0;
+}
+
+ul li,
+ol li {
+	margin-left:unit(@fontScale*2, em);
+}
+
+dl {
+	dt {
+		font-weight:600;
+		.default {
+			font-weight:300;
+		}
+	}
+	dd {
+		margin:0 0 @lineheight @lineheight;
+	}
+}
+
+table {
+	border:1px solid @linecolor;
+	width:100%;
+	border-collapse: collapse;
+}
+table tr th,
+table tr td {
+	padding:0 0.4em;
+	margin:0;
+	border-bottom:1px solid @linecolor;
+}
+table tr th + th ,
+table tr td + td {
+	border-left:1px solid @linecolor;
+}
+table tr th {
+	text-align: left;
+}
+table tr:hover td {
+	background-color:@blockbackground;
+}
+
+blockquote {
+	padding:0.5em 0.8em;
+	margin-bottom:(@lineheight/2);
+	font-weight:200;
+	font-style:italic;
+	background-color:@blockbackground;
+	p {
+		margin-bottom:0;
+		&+ p {
+			margin-top:@lineheight;
+		}
+	}
+}
+code, pre {
+	color:lighten(@color, 10%);
+	font-family:'Andale Mono', monaco, monospace;
+	font-size:0.95em;
+	padding:0.2em;
+	background-color:@blockbackground;
+}
+pre {
+	padding:0.5em 0.8em;
+	line-height:1.8em;
+	background-color:@blockbackground;
+	white-space:pre-wrap;
+	overflow:auto;
+	-webkit-tab-size:5;
+	-moz-tab-size:5;
+	tab-size:5;
+}
+
+hr {
+	margin:1em 0;
+	border-top:1px solid @linecolor;
+}
+
+a {
+	color: @linkcolor;
+	&:hover {
+		color:@linkhover;
+	}
+}
