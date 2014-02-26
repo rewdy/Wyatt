@@ -23,7 +23,7 @@ Table of Contents
 */
 
 @background: #eceef1;
-@color: #828c97;
+@color: #727b83;
 @accent: #2f79e7;
 @linkcolor: @accent;
 @linkhover: #333;
@@ -354,7 +354,7 @@ ul.comment-list {
 	clear:both;
 	padding:1em 0.5em;
 	text-align:center;
-	background-color:lighten(@color, 35%);
+	background-color:lighten(@color, 40%);
 	.sharing-heading {
 		position:relative;
 		top:-0.5em;
@@ -377,10 +377,11 @@ ul.sharing-list {
 			width:1em;
 			padding:0.3em 1em;
 			margin:0 0.25em 0 0;
+			border:1px solid @accent;
 			text-align:center;
 			color:@accent;
 			line-height:@lineheight;
-			border:1px solid @accent;
+			background-color:@background;
 			.transition;
 			.text {
 				display:none;
