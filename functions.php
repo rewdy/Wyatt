@@ -218,8 +218,9 @@ function get_share_links($url, $title, $class = 'sharing-list', $icon_prefix = '
 		);
 		$services['email']	= array(
 			'label'	=> 'Email',
-			'url'	=> 'mailto:?&amp;Subject={{title}}&amp;Body={{url}}',
+			'url'	=> 'mailto:?&amp;Subject=Sharing:+{{title}}&amp;Body={{url}}',
 			'icon'	=> 'envelope',
+			'extra' => 'target="_blank"',
 		);
 
 		// build the output
