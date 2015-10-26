@@ -37,8 +37,7 @@ Table of Contents
 @blockbackground: #f5f7fa;
 @screen: @blockbackground;
 
-@font: "Helvetica Neue", sans-serif;
-// @font: "Lato", sans-serif;
+@font: "Lato", sans-serif;
 @sans: @font;
 @size: 18px;
 @small: 0.8em;
@@ -46,6 +45,9 @@ Table of Contents
 @lineheight:unit(@fontScale, em);
 @headingDeepest: 6; // Should remain 6 or fewer.
 @headingMultiplier: 1.22;
+@fontweightlight:100;
+@fontweightnormal:400;
+@fontweightbold:700;
 
 @maxwidth: 700px;
 @minwidth: 300px;
@@ -86,7 +88,7 @@ body {
 	font-size:6em;
 	line-height:1.25em;
 	font-family:@font;
-	font-weight:100;
+	font-weight:@fontweightlight;
 	white-space:nowrap;
 	a {
 		color:inherit;
@@ -203,7 +205,7 @@ body {
 	text-align:center;
 	text-transform:uppercase;
 	font-size:1.15em;
-	font-weight:400;
+	font-weight:@fontweightnormal;
 }
 @featured-overflow:200px;
 article {
@@ -333,7 +335,7 @@ article {
 // Comments
 #content-comments {
 	h2 .count {
-		font-weight:200;
+		font-weight:@fontweightlight;
 		float:right;
 	}
 	.comment-awaiting-moderation {
@@ -381,7 +383,7 @@ ul.comment-list {
 	.sharing-heading {
 		position:relative;
 		top:-0.5em;
-		font-weight:400;
+		font-weight:@fontweightnormal;
 		text-transform:uppercase;
 	}
 }

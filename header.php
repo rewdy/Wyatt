@@ -12,6 +12,7 @@ Header template file
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta charset="<?php bloginfo('charset'); ?>" />
 
 		<title><?php (wp_title('', false) != '') ? wp_title('&#8226;', true, 'right') : ''; ?><?php bloginfo('name'); ?></title>
@@ -19,7 +20,8 @@ Header template file
 		<!-- Meta -->
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+		<meta name="theme-color" content="#2976ea">
+		
 		<!-- Links -->
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -28,10 +30,12 @@ Header template file
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-
-		<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
-
+		
 		<?php
+		// Stylesheets
+		wp_enqueue_style('lato', '//brick.a.ssl.fastly.net/Lato:100,400,700,400i,700i');
+		wp_enqueue_style('wyatt', get_stylesheet_uri(), 'lato');
+		
 		// Javascript
 
 		// pull in the jQuery
@@ -41,7 +45,7 @@ Header template file
 			wp_enqueue_script('nivo-lightbox', get_template_directory_uri() . '/lib/Nivo-Lightbox-1.1/nivo-lightbox.min.js', 'jquery', 1.0);
 		}
 		// pull in the site js
-		wp_enqueue_script('wyatt_js', get_template_directory_uri() . '/js/wyatt-script.js', 'jquery');
+		wp_enqueue_script('wyatt_js', get_template_directory_uri() . '/js/wyatt-script.js', 'jquery', false);
 
 		// comment script
 		if (is_singular() && get_option('thread_comments')) :

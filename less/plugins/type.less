@@ -4,7 +4,7 @@ body {
 	font-family:@font;
 	font-size:@size;
 	line-height:@lineheight;
-	font-weight:400;
+	font-weight:@fontweightnormal;
 	-webkit-font-smoothing:antialiased;
 	@media only screen and (min-width:@breakpoint-lg) {
 		font-size:20px;
@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin:0.2em 0 0.5em 0;
 	line-height:unit(@fontScale*0.93, em);
 	color:@accent;
-	font-weight:300;
+	font-weight:@fontweightnormal;
 	a {
 		color:@accent;
 		text-decoration:none;
@@ -29,11 +29,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1, h2 {
 	font-size:1.6em;
-	font-weight:500;
+	font-weight:@fontweightbold;
 }
 h3 {
 	font-size:1.3em;
-	font-weight:400;
+	font-weight:@fontweightnormal;
 	margin-bottom:0.2em;
 }
 h4 {
@@ -51,9 +51,9 @@ ol li {
 
 dl {
 	dt {
-		font-weight:600;
+		font-weight:@fontweightbold;
 		.default {
-			font-weight:300;
+			font-weight:@fontweightnormal;
 		}
 	}
 	dd {
@@ -86,7 +86,7 @@ table tr:hover td {
 blockquote {
 	padding:0.5em 0.8em;
 	margin-bottom:(@lineheight/2);
-	font-weight:200;
+	font-weight:@fontweightnormal;
 	font-style:italic;
 	background-color:@blockbackground;
 	p {

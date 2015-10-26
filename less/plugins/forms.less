@@ -14,7 +14,7 @@ fieldset fieldset {
 fieldset.select legend {
 	display:block;
 	font-family:@sans;
-	font-weight:500;
+	font-weight:@fontweightbold;
 }
 .form-item.label-inline {
 	display: flex;
@@ -43,7 +43,7 @@ fieldset.select {
 fieldset.select label,
 .form-item fieldset label {
 	display:inline;
-	font-weight:normal;
+	font-weight:@fontweightnormal;
 	cursor:pointer;
 	margin-right:1em;
 }
@@ -63,15 +63,15 @@ textarea,
 select {
 	font-size:1rem;
 	font-family:@sans;
-	font-weight:300;
+	font-weight:@fontweightnormal;
 	color:@color;
 	background-color:@screen;
 	padding:0.5em;
-	border:0 none;
+	border:1px solid darken(@screen, 10%);
 	outline: none;
 	.transition;
 	&:focus {
-		border-color: #666;
+		border-color: darken(@screen, 30%);
 	}
 }
 input[type=text],
@@ -93,7 +93,7 @@ input[type=button] {
 	background-color:@accent;
 	font-family:@font;
 	font-size:0.95em;
-	font-weight:300;
+	font-weight:@fontweightnormal;
 	line-height:@lineheight;
 	text-decoration:none;
 	border-width:0;
