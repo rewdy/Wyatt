@@ -15,6 +15,10 @@ function setupUi() {
 	// youTube video wrappers
 	jQuery('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').not('.ignore').wrap('<span class="video-wrapper"></span>');
 
+	if ('ontouchstart' in document.documentElement) {
+		jQuery('body').addClass('touch-enabled');
+	}
+
 	// set up the gallery lightbox
 	setupLightbox();
 

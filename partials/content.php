@@ -34,8 +34,10 @@ Article default template file
 	<h1><?php the_title(); ?></h1>
 	<?php endif;?>
 
-	<?php if (do_shortcode('[est_time]') !== '[est_time]'): ?>
-	<p class="read-time"><?php echo __('Estimated reading time: ') . do_shortcode('[est_time]'); ?></p>
+	<?php 
+	$read_time = do_shortcode('[est_time]');
+	if ($read_time !== '[est_time]' && $read_time !== ''): ?>
+	<p class="read-time"><?php echo __('Estimated reading time: ') . $read_time ?></p>
 	<?php endif; ?>
 
 	<p class="date"><?php the_time(get_option('date_format')); ?></p>
