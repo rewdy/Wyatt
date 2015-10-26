@@ -108,9 +108,9 @@ body {
 
 #nav-holder {
 	.grid .full {
-		overflow:hidden;
 		padding:0;
 		margin:0 1em;
+		overflow:hidden;
 	}
 	a {
 		display:block;
@@ -125,11 +125,18 @@ body {
 	a#menu-link {
 		position:relative;
 		z-index:100;
+		.fa {
+			.transition;
+		}
+		&.open .fa {
+			transform:rotate(90deg);
+		}
 	}
 	ul {
 		float:left;
 		margin:0;
-		margin-left:-100%;
+		position:relative;
+		transform:translateX(-100%);
 		.transition;
 		li {
 			display:inline;
@@ -138,9 +145,8 @@ body {
 			padding:0;
 		}
 	}
-	&:hover ul,
 	ul.open {
-		margin-left:0;
+		transform:translateX(0);
 	}
 }
 @media only screen and (max-width:@breakpoint) {
@@ -197,8 +203,22 @@ body {
 	font-size:1.15em;
 	font-weight:400;
 }
+@featured-overflow:200px;
 article {
 	margin:4em 0;
+	.featured-image {
+		margin-left:-@featured-overflow;
+		margin-right:-@featured-overflow;
+		margin-bottom:4em;
+		@media only screen and (max-width:(@maxwidth + @featured-overflow*2)) {
+			margin-left:0;
+			margin-right:0;
+		}
+		img {
+			display:block;
+			width:100%;
+		}
+	}
 	.date {
 		font-size:@small;
 	}
@@ -277,12 +297,13 @@ article {
 		&.alignnone {
 			margin-left:-150px;
 			margin-right:-150px;
-			@media only screen and (max-width:@maxwidth) {
+			@media only screen and (max-width:(@maxwidth + 300px)) {
 				margin-left:0;
 				margin-right:0;
 			}
 			img {
 				display:block;
+				width:100%;
 			}
 		}
 		.wp-caption-text {
@@ -513,16 +534,6 @@ ul.sharing-list {
 // pull in classes
 @import "plugins/classes.less";
 
-#wpadminbar {
-	opacity:0.3;
-	margin-top:-29px;
-	.transition;
-	&:hover {
-		margin-top:0;
-		opacity:1;
-	}
-}
-
 // YouTube video wrapper (makes them responsive)
 .video-wrapper {
 	display:block;
@@ -552,8 +563,6 @@ ul.sharing-list {
 }
 
 // Mixins
-.transition(@duration: 0.3s) {
-	-webkit-transition:all @duration linear;
-	-moz-transition:all @duration linear;
-	transition:all @duration linear;
+.transition(@duration: 300ms) {
+	transition:all @duration ease-in-out;
 }

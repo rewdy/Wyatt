@@ -9,46 +9,11 @@ Functions file
 
 */
 
-// Add custom post types
-// function create_post_type() {
-// 	// set labels
-// 	$labels = array(
-// 		'name'				=> __('Resources'),
-// 		'singular_name'		=> __('Resource'),
-// 		'menu_name'			=> __('Resource'),
-// 		'parent_item_colon' => __('Parent Resource:'),
-// 		'all_items'			=> __('All Resources'),
-// 		'view_item'			=> __('View Resource'),
-// 		'add_new_item'		=> __('Add New Resource'),
-// 		'add_new'			=> __('New Resource'),
-// 		'edit_item'			=> __('Edit Resource'),
-// 		'update_item'		=> __('Update Resource'),
-// 		'search_items'		=> __('Search resources'),
-// 		'not_found'			=> __('No resources found'),
-// 		'not_found_in_trash'=> __('No resources found in Trash'),
-// 	);
-
-// 	// setup args
-// 	$args = array(
-// 		'labels' 			=> $labels,
-// 		'supports' 			=> array('title', 'editor', 'excerpt', 'thumbnail', 'comments'),
-// 		'menu_position' 	=> 5,
-// 		'public' 			=> true,
-// 		'has_archive' 		=> true,
-// 		'rewrite' 			=> array('slug' => 'resources'),
-// 	);
-
-// 	// make the post type
-// 	register_post_type('wyatt_resource', $args);
-// }
-// add_action('init', 'create_post_type');
-
 // Enable post thumbnails
 add_theme_support('post-thumbnails');
 
 // Add some image sizes for post thumbnails
-// add_image_size('resource-thumb', 340, 800);
-// add_image_size('page-header', 1600, 700, true);
+add_image_size('page-header', 1600, 700, true);
 
 // Add menus
 if (function_exists('register_nav_menu')) {
@@ -58,19 +23,6 @@ if (function_exists('register_nav_menu')) {
 
 // Add widget areas
 function wyatt_widget_init() {
-	// // Register drawer widgets
-	// register_sidebar(
-	// 	array(
-	// 		'name' => __('Drawer'),
-	// 		'desc' => __('Place widgets in the "drawer" below the slide out menu.'),
-	// 		'id' => 'drawer-widgets',
-	// 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-	// 		'after_widget' => '</div>',
-	// 		'before_title' => '<h2 class="widget-title">',
-	// 		'after_title' => '</h2>'
-	// 	)
-	// );
-	
 	// Register footer widgets
 	register_sidebar(
 		array(
@@ -85,6 +37,21 @@ function wyatt_widget_init() {
 	);
 }
 add_action('widgets_init', 'wyatt_widget_init');
+
+// function to return the feature image
+function wyatt_featured_image() {
+	$image = array();
+
+	if (get_the_post_thumbnail() != '') {
+		// get the URL of the featured image
+		$header_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'page-header');
+		$image['url'] = $header_image[0];
+		$image['width'] = $header_image[1];
+		$image['height'] = $header_image[2];
+	}
+
+	return (!empty($image)) ? $image : false;
+}
 
 // Content width
 if (!isset($content_width)) {

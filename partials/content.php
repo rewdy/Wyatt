@@ -14,6 +14,15 @@ Article default template file
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+	<?php
+	$featured_image = wyatt_featured_image();
+	if ($featured_image) :
+	?>
+	<div class="featured-image">
+		<img src="<?php echo $featured_image['url']; ?>" width="<?php echo $featured_image['width']; ?>" height="<?php echo $featured_image['height']; ?>" />
+	</div>
+	<?php endif; ?>
+
 	<!-- Post Title -->
 	<?php if (!is_singular()) :?>
 	<h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>

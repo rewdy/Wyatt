@@ -1,0 +1,26 @@
+{
+  "name": "Wyatt",
+  "version": "1.2.0",
+  "description": "A very simple, single-column, Helvetica-inspired theme for text-heavy blogs.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Wordpress",
+    "theme",
+    "reading",
+    "simple"
+  ],
+  "author": "Andrew Meyer",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "cssnano": "^3.3.1",
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^2.1.1",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-postcss": "^0.6.0"
+  }
+}

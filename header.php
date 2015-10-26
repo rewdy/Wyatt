@@ -75,8 +75,8 @@ Header template file
 					<div id="nav-holder">
 						<div class="grid">
 							<div class="full">
-								<a href="#menu" id="menu-link"><i class="fa fa-bars"></i></a>
 								<nav id="access" role="navigation">
+									<a href="#menu" id="menu-link"><i class="fa fa-bars"></i></a>
 									<h2 class="assistive-text">Main menu</h2>
 									<?php
 										$menu_args = array(

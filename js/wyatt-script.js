@@ -8,7 +8,7 @@ jQuery(function(){
 function setupUi() {
 	// menu link
 	jQuery('a#menu-link').click(function(){
-		jQuery(this).next('ul').toggleClass('open');
+		jQuery(this).siblings('ul').add(this).toggleClass('open');
 		return false;
 	});
 
