@@ -6,8 +6,12 @@ body {
 	line-height:@lineheight;
 	font-weight:400;
 	-webkit-font-smoothing:antialiased;
-	-moz-font-smoothing:antialiased;
-	font-smoothing:antialiased;
+	@media only screen and (min-width:@breakpoint-lg) {
+		font-size:20px;
+	}
+	@media only screen and (max-width:@breakpoint) {
+		font-size:16px;
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
