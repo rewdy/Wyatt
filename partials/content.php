@@ -34,6 +34,10 @@ Article default template file
 	<h1><?php the_title(); ?></h1>
 	<?php endif;?>
 
+	<?php if (do_shortcode('[est_time]') !== '[est_time]'): ?>
+	<p class="read-time"><?php echo __('Estimated reading time: ') . do_shortcode('[est_time]'); ?></p>
+	<?php endif; ?>
+
 	<p class="date"><?php the_time(get_option('date_format')); ?></p>
 
 	<!-- Post Content -->
@@ -58,11 +62,14 @@ Article default template file
 			<?php if (!is_singular()) : ?>
 			<li><a href="<?php the_permalink(); ?>" title="<?php _e('Read more...'); ?>" class="perma-link"><i class="fa fa-ellipsis-h"></i><span class="text"><?php _e('Permalink'); ?></span></a></li>
 			<?php endif; ?>
+			
 			<?php if (comments_open()) : ?>
 			<?php $comment_icon = '<i class="fa fa-comment"></i>'; ?>
 			<li><?php comments_popup_link($comment_icon . '<span class="text">Comment</span>', $comment_icon . '<span class="text">1 Comment</span>', $comment_icon . '<span class="text">% Comments</span>'); ?></li>
 			<?php endif; ?>
+			
 			<?php edit_post_link('<i class="fa fa-pencil"></i><span class="text">Edit</span>', '<li>', '</li>' ); ?>
+			
 		</ul>
 	</div>
 

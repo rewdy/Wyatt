@@ -24,6 +24,8 @@ Table of Contents
 
 @background: #eceef1;
 @color: #727b83;
+@text: @color;
+@lighttext: lighten(@color, 20%);
 @accent: #2f79e7;
 @linkcolor: @accent;
 @linkhover: #333;
@@ -223,8 +225,13 @@ article {
 			width:100%;
 		}
 	}
-	.date {
+	.date,
+	.read-time {
 		font-size:@small;
+	}
+	.read-time {
+		float:right;
+		color:@lighttext;
 	}
 	.details {
 		float:right;
